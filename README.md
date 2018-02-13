@@ -66,21 +66,21 @@ ignoreWithinUnit | 'minutes' | the unit that goes along with the ignoreWithin nu
 keep | true | Specify a number if you wish to only retain a limited number of revisions per document. True = retain all revisions. *Number or Boolean*
 prune | false | Will delete the restored revision and all subsequent revisions. *Boolean* 
 debug | false | Turn to true to get console debug messages.
-callback | undefined | Allows custom code to be executed against the revision and modifier objects before updating the collection. Takes two parameters: ``function(error, result)``. Refer to the [node mongodb driver documentation](http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#update).
+callback | undefined | Allows custom code to be executed against the revision and modifier objects before updating the collection.
 
 
 Restoring a Revision
 ------------------------
 A revision can be restored by calling CollectionRevisions.restore from either the client, server, or both. It will follow the same allow / deny permissions for an update, or use your own permissions and call CollectionRevisions.restore within a method call. If you want the simulation to run correctly on the client, the document needs to be published and the revisions field present.
 ```
-CollectionRevisions.restore(collectionName, documentId, revision);
+CollectionRevisions.restore(collectionName, documentId, revision, callback);
 ```
 Parameter | Type | Description
 --- | --- | ---
 collectionName | String | This is the string name of your collection, ("Foo")
 documentId | String | the _id of the document you want to restore
 revision | revisionId or Object | Simplest form is to provide the revisionId stored within the revision, if you want to use specific data to restore, you can provide the revision object, overriding any fields you want to update the document to.
-callback | Function | Callback function that is executed when the update is completed.
+callback | Function | Callback function that is executed when the update is completed. Takes two parameters: ``function(error, result)``. Refer to the [node mongodb driver documentation](http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#update).
 
 Showing a list of Revisions
 ------------------------
