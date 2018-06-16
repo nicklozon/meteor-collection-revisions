@@ -1,6 +1,6 @@
 Package.describe({
   name: 'nicklozon:collection-revisions',
-  version: '0.3.3',
+  version: '0.4.0',
   // Brief, one-line summary of the package.
   summary: 'Keep revision history for collection documents and provide restore functionality.',
   // URL to the Git repository containing the source code for this package.
